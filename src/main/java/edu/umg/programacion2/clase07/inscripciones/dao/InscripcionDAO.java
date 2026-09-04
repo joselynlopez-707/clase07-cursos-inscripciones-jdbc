@@ -162,12 +162,35 @@ public class InscripcionDAO {
      * seleccionando columnas de `estudiantes` y filtrando por `c.nombre`.
      */
     public List<Estudiante> listarEstudiantesDeCurso(String nombreCurso) throws SQLException {
-        List<Estudiante> resultado = new ArrayList<>();
-        // TODO: completar.
+        List<Estudiante> estudiantes = new ArrayList<>();
 
-        return resultado;
+        String sql = "SELECT e.id, e.nombre, e.carnet "
+                   + "FROM cursos c "
+                   + "JOIN inscripciones i ON c.id = i.curso_id "
+                   + "JOIN estudiantes e ON i.estudiante_id = e.id "
+                   + "WHERE c.nombre = ?";
+
+        try (Connection conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
+             PreparedStatement ps = conexion.prepareStatement(sql)) {
+
+            ps.setString(1, nombreCurso);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Estudiante estudiante = new Estudiante(
+                        rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getString("carnet")
+                    );
+
+                    estudiantes.add(estudiante);
+                }
+            }
+        }
+
+        return estudiantes;
     }
-
+    
     /**
      * Calcula el promedio de notas de un estudiante (solo cursos que YA
      * tienen nota registrada).

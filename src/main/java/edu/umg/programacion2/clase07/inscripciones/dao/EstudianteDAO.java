@@ -21,7 +21,11 @@ public class EstudianteDAO {
 
     private static final String URL = "jdbc:mysql://localhost:3306/prog2_db?useSSL=false&serverTimezone=UTC";
     private static final String USUARIO = "root";
+<<<<<<< HEAD
     private static final String PASSWORD = "LasNANAS_707";
+=======
+    private static final String PASSWORD = "Carlin_esp19";
+>>>>>>> 5beaff70b84101faa15f30fc985f840226c6e11a
 
     public int crear(Estudiante estudiante) throws SQLException {
         String sql = "INSERT INTO estudiantes (nombre, carnet) VALUES (?, ?)";

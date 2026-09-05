@@ -1,1 +1,7 @@
 target/
+<<<<<<< HEAD
+=======
+.classpath
+.project
+.settings/
+>>>>>>> 5beaff70b84101faa15f30fc985f840226c6e11a

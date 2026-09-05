@@ -1,4 +1,9 @@
 # Clase 7 - Cursos e Inscripciones (JDBC con relacion N:M) — Tarea
+## Integrantes
+
+- Karen Jarquín
+- Alondra Argueta
+- Joselyn López
 
 ## Enunciado
 
